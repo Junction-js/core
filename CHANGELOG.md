@@ -1,3 +1,11 @@
+## [1.0.2](https://github.com/junction-js/core/compare/v1.0.1...v1.0.2) (2025-09-03)
+
+
+### Bug Fixes
+
+* adjas ([050af44](https://github.com/junction-js/core/commit/050af44011f3ed873557ddba7a53938d9b2f9aee))
+* yarn ([a7d26bf](https://github.com/junction-js/core/commit/a7d26bf16f85e654c7ff3f8fc6c6e219d92bac82))
+
 ## [1.0.1](https://github.com/junction-js/core/compare/v1.0.0...v1.0.1) (2025-09-03)
 
 
