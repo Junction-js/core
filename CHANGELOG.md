@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/junction-js/core/compare/v1.1.0...v1.1.1) (2025-09-03)
+
+
+### Bug Fixes
+
+* test ([1930596](https://github.com/junction-js/core/commit/193059648fa8d27f69f00405c7c9e0161f290157))
+
 # [1.1.0](https://github.com/junction-js/core/compare/v1.0.0...v1.1.0) (2025-09-03)
 
 
