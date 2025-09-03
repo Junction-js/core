@@ -1,1 +1,1 @@
-console.log('Hello Junction!')
+console.log('Hello Junction!');
