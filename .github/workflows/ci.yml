@@ -63,7 +63,7 @@ jobs:
     needs: [build-and-test, codeql-analysis]
     steps:
       - name: Automerge
-        uses: "reitermarkus/automerge-pull-request@v2"
+        uses: reitermarkus/automerge@v2
         with:
           token: ${{ secrets.GH_TOKEN }}
 
