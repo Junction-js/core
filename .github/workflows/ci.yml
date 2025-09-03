@@ -22,7 +22,6 @@ on:
   check_suite:
     types:
       - completed
-  # ❌ Removido: status: {} → não é válido
 
 permissions:
   contents: write
@@ -68,9 +67,11 @@ jobs:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
-      - name: Automerge PRs (Dependabot + Usuários aprovados)
+
+      - name: Automerge PRs
         uses: pascalgn/automerge-action@v0.16.3
         env:
           GITHUB_TOKEN: "${{ secrets.GH_TOKEN }}"
+          MERGE_LABELS: ""
           MERGE_METHOD: "merge"
           MERGE_COMMIT_MESSAGE: "pull-request-title"
