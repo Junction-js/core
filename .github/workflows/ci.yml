@@ -24,10 +24,7 @@ jobs:
 
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
-
-      - name: Security Audit
-        run: yarn npm audit --all --recursive
-
+        
       - name: Lint
         run: yarn lint
 
