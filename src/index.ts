@@ -1,3 +1,3 @@
-const junctionJS = 'hello';
+const junctionJS = 'hello'
 
 console.log(junctionJS);
