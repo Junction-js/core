@@ -12,7 +12,9 @@
     [
       "@semantic-release/npm",
       {
-        "access": "public"
+        "npmPublish": true,
+        "tarballDir": "pack",
+        "pkgRoot": "./"
       }
     ],
     [
@@ -23,5 +25,13 @@
       }
     ],
     "@semantic-release/github"
+  ],
+  "publish": [
+    [
+      "@semantic-release/npm",
+      {
+        "access": "public"
+      }
+    ]
   ]
 }
