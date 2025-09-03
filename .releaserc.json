@@ -21,7 +21,8 @@
       "@semantic-release/git",
       {
         "assets": ["dist/**/*.{js,d.ts}", "package.json", "CHANGELOG.md"],
-        "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+        "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}",
+        "gitCommitCommand": "git commit -m '${nextRelease.message}' --no-verify"
       }
     ],
     "@semantic-release/github"
