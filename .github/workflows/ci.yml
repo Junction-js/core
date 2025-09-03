@@ -26,7 +26,7 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Security Audit
-        run: yarn npm audit --all --sevetiry high --recursive
+        run: yarn npm audit --all --severity high --recursive
 
       - name: Lint
         run: yarn lint
