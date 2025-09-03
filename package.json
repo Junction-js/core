@@ -4,6 +4,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "repository": "https://github.com/junction-js/core",
+  "private": false,
   "author": "Torkov <Torkov@arch>",
   "license": "MIT",
   "devDependencies": {
