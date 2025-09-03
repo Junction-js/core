@@ -1,1 +1,3 @@
-console.log('Hello Junction!');
+const junctionJS = 'hello';
+
+console.log(junctionJS);
