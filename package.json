@@ -30,6 +30,6 @@
     "build": "tsc",
     "lint": "eslint \"{src,test}/**/*.ts\" --fix",
     "format": "prettier --write \"{src,test}/**/*.ts\"",
-    "prepare": "husky"
+    "postinstall": "husky prepare"
   }
 }
