@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/junction-js/core/compare/v1.0.0...v1.0.1) (2025-09-03)
+
+
+### Bug Fixes
+
+* yarn.lock ([57d0ccb](https://github.com/junction-js/core/commit/57d0ccb614c880dd0ed6f5e597e8291b93016523))
+
 # 1.0.0 (2025-09-03)
 
 
