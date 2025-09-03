@@ -1,3 +1,6 @@
+
+
+// .releaserc.json
 {
   "branches": ["main"],
   "plugins": [
@@ -21,9 +24,7 @@
       "@semantic-release/git",
       {
         "assets": ["dist/**/*.{js,d.ts}", "package.json", "CHANGELOG.md"],
-        "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}",
-        "verify": false,
-        "git-commit-command": "git commit --no-verify -, \"chore(release): ${nextRelease.version} [skip ci]\""
+        "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
       }
     ],
     "@semantic-release/github"
@@ -37,3 +38,4 @@
     ]
   ]
 }
+

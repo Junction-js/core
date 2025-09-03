@@ -36,6 +36,7 @@
     "lint": "eslint \"{src,test}/**/*.ts\" --fix",
     "format": "prettier --write \"{src,test}/**/*.ts\"",
     "postinstall": "husky prepare",
-    "prepare": "husky"
+    "prepare": "husky",
+    "ci:release": "semantic-release --no-verify"
   }
 }
