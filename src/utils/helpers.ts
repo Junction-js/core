@@ -4,5 +4,5 @@
  * @returns A string de saudação.
  */
 export function sayHello(name: string): string {
-  return `Olá ${name}! Bem-vindo ao Junction`;
+  return `Olá ${name}! Bem-vindo ao Junction!`;
 }
