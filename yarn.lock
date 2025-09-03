@@ -375,6 +375,29 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@junction-js/core@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@junction-js/core@workspace:."
+  dependencies:
+    "@commitlint/cli": "npm:^19.8.1"
+    "@commitlint/config-conventional": "npm:^19.8.1"
+    "@semantic-release/changelog": "npm:^6.0.3"
+    "@semantic-release/git": "npm:^10.0.1"
+    "@semantic-release/github": "npm:^11.0.5"
+    "@semantic-release/npm": "npm:^12.0.2"
+    "@typescript-eslint/eslint-plugin": "npm:^8.42.0"
+    "@typescript-eslint/parser": "npm:^8.42.0"
+    eslint: "npm:^9.34.0"
+    eslint-config-prettier: "npm:^10.1.8"
+    eslint-plugin-prettier: "npm:^5.5.4"
+    husky: "npm:^9.1.7"
+    lint-staged: "npm:^16.1.6"
+    prettier: "npm:^3.6.2"
+    semantic-release: "npm:^24.2.7"
+    typescript: "npm:^5.9.2"
+  languageName: unknown
+  linkType: soft
+
 "@nodelib/fs.scandir@npm:2.1.5":
   version: 2.1.5
   resolution: "@nodelib/fs.scandir@npm:2.1.5"
@@ -1784,29 +1807,6 @@ __metadata:
   checksum: 10c0/90a0e40abbddfd7618f8ccd63a74d88deea94e77d0e8dbbea059fa7ebebb8fbb4e2909667fe26f3a467073de1a542ebe6ae4c73a73745ac5833786759cd906c9
   languageName: node
   linkType: hard
-
-"core@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "core@workspace:."
-  dependencies:
-    "@commitlint/cli": "npm:^19.8.1"
-    "@commitlint/config-conventional": "npm:^19.8.1"
-    "@semantic-release/changelog": "npm:^6.0.3"
-    "@semantic-release/git": "npm:^10.0.1"
-    "@semantic-release/github": "npm:^11.0.5"
-    "@semantic-release/npm": "npm:^12.0.2"
-    "@typescript-eslint/eslint-plugin": "npm:^8.42.0"
-    "@typescript-eslint/parser": "npm:^8.42.0"
-    eslint: "npm:^9.34.0"
-    eslint-config-prettier: "npm:^10.1.8"
-    eslint-plugin-prettier: "npm:^5.5.4"
-    husky: "npm:^9.1.7"
-    lint-staged: "npm:^16.1.6"
-    prettier: "npm:^3.6.2"
-    semantic-release: "npm:^24.2.7"
-    typescript: "npm:^5.9.2"
-  languageName: unknown
-  linkType: soft
 
 "cosmiconfig-typescript-loader@npm:^6.1.0":
   version: 6.1.0
