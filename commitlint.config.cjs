@@ -3,5 +3,5 @@ module.exports = {
     rules: {
         'body-max-line-length': [2, 'always', 100]
     },
-    ignores: [(message)] => message.includes('[skip ci]')
+    ignores: [(message) => message.includes('[skip ci]')]
 }
