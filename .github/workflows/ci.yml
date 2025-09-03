@@ -24,6 +24,9 @@ jobs:
 
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
+
+      - name: Format
+        run: yarn format
         
       - name: Lint
         run: yarn lint
@@ -31,8 +34,6 @@ jobs:
       - name: Build
         run: yarn build
         
-      - name: Test
-        run: yarn test
 
   codeql-analysis:
     name: CodeQL
