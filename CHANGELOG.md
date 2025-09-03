@@ -1,3 +1,17 @@
+# [1.1.0](https://github.com/junction-js/core/compare/v1.0.2...v1.1.0) (2025-09-03)
+
+
+### Bug Fixes
+
+* ci.yml ([6fe61f5](https://github.com/junction-js/core/commit/6fe61f598591d20b7c2a17792c52cc88f9e3891a))
+* ci.yml ([7579b41](https://github.com/junction-js/core/commit/7579b41988c1dd910eaea1127f9b15a9703c7549))
+* jest.config.js ([7e98bc9](https://github.com/junction-js/core/commit/7e98bc95678787c50d8660ee1bcce37535700b04))
+
+
+### Features
+
+* jest ([47eef05](https://github.com/junction-js/core/commit/47eef0575bf9c415c3d3360a2140673cb3d42009))
+
 ## [1.0.2](https://github.com/junction-js/core/compare/v1.0.1...v1.0.2) (2025-09-03)
 
 
