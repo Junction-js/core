@@ -5,73 +5,94 @@ on:
     branches:
       - main
   pull_request:
-    types:
-      - opened
-      - edited
-      - labeled
-      - unlabeled
-      - synchronize
-      - ready_for_review
-      - reopened
-      - unlocked
     branches:
       - main
-  pull_request_review:
-    types:
-      - submitted
-  check_suite:
-    types:
-      - completed
-
-permissions:
-  contents: write
-  pull-requests: write
-  packages: write
 
 jobs:
   build-and-test:
+    name: Build and Test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20.x'
           cache: 'yarn'
-      - run: yarn install --frozen-lockfile
-      - run: yarn lint
-      - run: yarn build
+
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Security Audit
+        run: npm audit --audit-level=high
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Build
+        run: yarn build
+        
+      - name: Test
+        run: yarn test
+
+  codeql-analysis:
+    name: CodeQL
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: typescript
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v2
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2
+
+  automerge:
+    name: Automerge
+    runs-on: ubuntu-latest
+    needs: [build-and-test, codeql-analysis]
+    steps:
+      - name: Automerge
+        uses: reitermarkus/automerge-pull-request@v2
+        with:
+          token: ${{ secrets.GH_TOKEN }}
 
   release:
+    name: Release
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    needs: build-and-test
+    needs: [build-and-test, codeql-analysis]
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
         with:
           token: ${{ secrets.GH_TOKEN }}
           fetch-depth: 0
-      - name: Use Node.js
+
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20.x'
           cache: 'yarn'
-      - run: yarn install --frozen-lockfile
-      - run: yarn ci:release
+
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Run Semantic Release
+        run: yarn ci:release
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-  automerge:
-    if: github.event_name == 'pull_request'
-    runs-on: ubuntu-latest
-    needs: [build-and-test]
-    steps:
-      - name: Automerge PRs
-        uses: pascalgn/automerge-action@v0.16.3
-        env:
-          GITHUB_TOKEN: "${{ secrets.GH_TOKEN }}"
-          MERGE_LABELS: ""
-          MERGE_METHOD: "merge"
-          MERGE_COMMIT_MESSAGE: "pull-request-title"
