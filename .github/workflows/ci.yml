@@ -5,28 +5,8 @@ on:
     branches:
       - main
   pull_request:
-    types:
-      - opened
-      - edited
-      - labeled
-      - unlabeled
-      - synchronize
-      - ready_for_review
-      - reopened
-      - unlocked
     branches:
       - main
-  pull_request_review:
-    types:
-      - submitted
-  check_suite:
-    types:
-      - completed
-      
-permissions:
-  contents: write
-  pull-requests: write
-  packages: write
 
 jobs:
   build-and-test:
@@ -47,13 +27,12 @@ jobs:
 
       - name: Format
         run: yarn format
-        
+
       - name: Lint
         run: yarn lint
 
       - name: Build
         run: yarn build
-        
 
   codeql-analysis:
     name: CodeQL
@@ -75,21 +54,25 @@ jobs:
         uses: github/codeql-action/autobuild@v2
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v2
+        uses: github/codeql-action/analyze@v3
 
   automerge:
-    needs: [build-and-test, codeql-analysis]
-    if: github.event_name == 'pull_request'
+    name: Automerge
     runs-on: ubuntu-latest
+    needs: [build-and-test, codeql-analysis]
+    # Este job só roda em Pull Requests
+    if: github.event_name == 'pull_request'
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
-      - name: Automerge
+      - name: Automerge pull request
         uses: pascalgn/automerge-action@v0.16.3
         env:
-          GITHUB_TOKEN: "${{ secrets.GH_TOKEN }}"
-          MERGE_LABELS: ""
-          MERGE_METHOD: "merge"
-          MERGE_COMMIT_MESSAGE: "pull-request-title"
-
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MERGE_METHOD: 'squash'
+          MERGE_LABELS: '' 
+          
   release:
     name: Release
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
@@ -116,4 +99,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
