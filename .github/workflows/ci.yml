@@ -78,6 +78,7 @@ jobs:
         uses: github/codeql-action/analyze@v2
 
   automerge:
+    needs: [build-and-test, codeql-analysis]
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
