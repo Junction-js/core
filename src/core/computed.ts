@@ -1,5 +1,4 @@
-import { Signal } from './signal';
-import { effect } from './dep-tracking';
+import { Signal, effect } from './signal';
 
 /**
  * Cria um signal cujo valor é o resultado de uma função. O valor é
@@ -17,7 +16,8 @@ export function computed<T>(fn: () => T): Signal<T> {
   // Cria um signal interno para notificar os observadores deste 'computed'.
   const computedSignal = new Signal<T>(undefined as T);
 
-  // O 'effect' agora é responsável por rastrear as dependências e marcar o 'computed' como "sujo".
+  // O 'effect' agora observa as dependências e marca o 'computed' como "sujo".
+  // Ele apenas notifica quem depende dele, sem executar o cálculo de imediato.
   effect(() => {
     isDirty = true;
     computedSignal.trigger();
