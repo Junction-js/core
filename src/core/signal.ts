@@ -1,18 +1,7 @@
-/**
- * Representa uma funçao que reage a mudanças de um Signal.
- * @internal
- */
-type Effect = () => void;
+import { activeEffect, type Effect } from './dep-tracking';
 
 /**
- * Armazena a lista de efeitos que dependem do Signal atualmente em execuçao.
- * @intenal
- */
-let activeEffect: Effect | null = null;
-
-/**
- * Uma classe que representa um valor reativo. Quando seu valor é alterado,
- * notifica todos os "efeitos" que dependem dele.
+ * Uma classe que representa um valor reativo. Quando seu valor é alterado, notifica todos os "efeitos" que dependem dele.
  */
 export class Signal<T> {
   private _value: T;
@@ -23,8 +12,8 @@ export class Signal<T> {
   }
 
   /**
-   * Obtem o valor atual do Signal.
-   * Se houver um efeito ativo, ele é incrito para ser notificado de mudanças.
+   * Obtèm o valor atual do Signal,
+   * Se houver um efeito ativo, ele é inscrito para ser notificado de mudanças
    */
   get value(): T {
     this.track();
@@ -35,16 +24,15 @@ export class Signal<T> {
    * Define um novo valor para o Signal e notifica os efeitos inscritos se o valor mudou.
    * @param newValue O novo valor a ser definido.
    */
-  // eslint-disable-next-line @typescript-eslint/explicit-member-accessibility
-  public set value(newValue: T) {
-    // Evita a notificaçao se o valor nao mudou, otimizando a performance.
+  set value(newValue: T) {
     if (newValue !== this._value) {
       this._value = newValue;
       this.trigger();
     }
   }
+
   /**
-   * Adiciona o efeito atual à lista de inscritos.
+   * Adiciona o efeito ativo atual à lista de inscritos.
    * @private
    */
   private track(): void {
@@ -57,7 +45,7 @@ export class Signal<T> {
    * Notifica todos os efeitos inscritos para que sejam reexecutados.
    * @private
    */
-  private trigger(): void {
+  trigger(): void {
     for (const effects of this.effects) {
       effects();
     }
@@ -65,19 +53,8 @@ export class Signal<T> {
 }
 
 /**
- * Executa uma funçao e a inscreve como efeito.
- * A cada execuçao, o efeito é registrado nos Signals que ele acessa.
- * @param fn A funçao a ser executada como efeito.
- */
-export function effect(fn: Effect): void {
-  activeEffect = fn;
-  fn();
-  activeEffect = null;
-}
-
-/**
  * Cria e retorna um novo Signal.
- * @param initialValue O valor inicial do Signal.
+ * @param initialValue O valor do Signal.
  * @returns Um novo Signal.
  */
 export function signal<T>(initialValue: T): Signal<T> {
