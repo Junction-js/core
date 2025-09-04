@@ -1,3 +1,23 @@
+## [1.2.1](https://github.com/junction-js/core/compare/v1.2.0...v1.2.1) (2025-09-04)
+
+
+### Bug Fixes
+
+* **jest:** correct tests directory in jest config ([6816973](https://github.com/junction-js/core/commit/6816973165d508c7a42360e1cd89615cf7e388c7))
+
+# [1.2.0](https://github.com/junction-js/core/compare/v1.1.2...v1.2.0) (2025-09-04)
+
+
+### Bug Fixes
+
+* **jest:** correct tests directory in jest config ([250e966](https://github.com/junction-js/core/commit/250e9665c66033492e9412daecdce422d1fa0d89))
+
+
+### Features
+
+* implement core reactivity system and add unit tests ([7d3657c](https://github.com/junction-js/core/commit/7d3657c43c561dfb3bd35bb47cbbcdaf165131af))
+* implement core reactivity system and add unit tests ([#17](https://github.com/junction-js/core/issues/17)) ([a87f845](https://github.com/junction-js/core/commit/a87f845ef9f56c00f183d77721f20420384e1f89))
+
 ## [1.1.2](https://github.com/junction-js/core/compare/v1.1.1...v1.1.2) (2025-09-04)
 
 
