@@ -57,7 +57,7 @@ export class Signal<T> {
    * Notifica todos os efeitos inscritos para que sejam reexecutados.
    * @private
    */
-  private trigger(): void {
+  trigger(): void {
     for (const effects of this.effects) {
       effects();
     }
