@@ -50,8 +50,10 @@ jobs:
         with:
           languages: typescript
 
-      - name: Autobuild
-        uses: github/codeql-action/autobuild@v2
+      - name: Perform Manual Build for CodeQL
+        run: |
+          yarn install --frozen-lockfile
+          yarn build
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2
@@ -71,7 +73,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MERGE_METHOD: 'squash'
-          MERGE_LABELS: '' 
           
   release:
     name: Release
