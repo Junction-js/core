@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/junction-js/core/compare/v1.2.0...v1.2.1) (2025-09-04)
+
+
+### Bug Fixes
+
+* **jest:** correct tests directory in jest config ([6816973](https://github.com/junction-js/core/commit/6816973165d508c7a42360e1cd89615cf7e388c7))
+
 # [1.2.0](https://github.com/junction-js/core/compare/v1.1.2...v1.2.0) (2025-09-04)
 
 
