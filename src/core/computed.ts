@@ -12,7 +12,6 @@ export function computed<T>(fn: () => T): Signal<T> {
   const computedSignal = new Signal<T>(undefined as T);
 
   effect(() => {
-    fn();
     isDirty = true;
     computedSignal.trigger();
   });
