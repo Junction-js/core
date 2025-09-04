@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/junction-js/core/compare/v1.1.1...v1.1.2) (2025-09-04)
+
+
+### Bug Fixes
+
+* package.json ([#16](https://github.com/junction-js/core/issues/16)) ([d7eac46](https://github.com/junction-js/core/commit/d7eac46cc8de94f739e46903fb2891b8f5b9c3ea))
+
 ## [1.1.1](https://github.com/junction-js/core/compare/v1.1.0...v1.1.1) (2025-09-04)
 
 
