@@ -5,8 +5,28 @@ on:
     branches:
       - main
   pull_request:
+    types:
+      - opened
+      - edited
+      - labeled
+      - unlabeled
+      - synchronize
+      - ready_for_review
+      - reopened
+      - unlocked
     branches:
       - main
+  pull_request_review:
+    types:
+      - submitted
+  check_suite:
+    types:
+      - completed
+      
+permissions:
+  contents: write
+  pull-requests: write
+  packages: write
 
 jobs:
   build-and-test:
@@ -58,14 +78,16 @@ jobs:
         uses: github/codeql-action/analyze@v2
 
   automerge:
-    name: Automerge
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
-    needs: [build-and-test, codeql-analysis]
     steps:
       - name: Automerge
-        uses: reitermarkus/automerge@v2
-        with:
-          token: ${{ secrets.GH_TOKEN }}
+        uses: pascalgn/automerge-action@v0.16.3
+        env:
+          GITHUB_TOKEN: "${{ secrets.GH_TOKEN }}"
+          MERGE_LABELS: ""
+          MERGE_METHOD: "merge"
+          MERGE_COMMIT_MESSAGE: "pull-request-title"
 
   release:
     name: Release
