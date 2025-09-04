@@ -1,3 +1,1 @@
-const junctionJS = 'hello';
-
-console.log(junctionJS);
+export { Signal, signal, effect } from './core/signal';
