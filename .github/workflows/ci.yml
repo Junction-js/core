@@ -25,14 +25,17 @@ jobs:
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Format
-        run: yarn format
+      - name: Security Audit
+        run: npm audit --audit-level=high
 
       - name: Lint
         run: yarn lint
 
       - name: Build
         run: yarn build
+        
+      - name: Test
+        run: yarn test
 
   codeql-analysis:
     name: CodeQL
@@ -71,7 +74,7 @@ jobs:
       - name: Automerge pull request
         uses: pascalgn/automerge-action@v0.16.3
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           MERGE_METHOD: 'squash'
           MERGE_LABELS: ''
           
@@ -80,6 +83,10 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     needs: [build-and-test, codeql-analysis]
+    permissions:
+      contents: write # Esta permissão é crucial para criar releases e tags
+      issues: write
+      pull-requests: write
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
